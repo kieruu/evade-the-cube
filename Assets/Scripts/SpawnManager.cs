@@ -6,6 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
 
     public GameObject enemyPrefab;
+    public GameObject catchEnemyPrefab;
     public Vector2 spawnRangeX;
 
     private float m_SpawnInterval = 1.0f;
@@ -14,7 +15,8 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("SpawnEnemy", 0, m_SpawnInterval);
+        InvokeRepeating(nameof(SpawnEnemy), 0, m_SpawnInterval);
+        InvokeRepeating(nameof(SpawnCatchEnemy), 1.0f, m_SpawnInterval + 1.0f);
     }
 
     private void SpawnEnemy()
@@ -28,6 +30,20 @@ public class SpawnManager : MonoBehaviour
             enemyPrefab,
             spawnPosition,
             enemyPrefab.transform.rotation);
+
+    }
+
+    private void SpawnCatchEnemy()
+    {
+        Vector3 spawnPosition = new Vector3(
+            Random.Range(spawnRangeX.x, spawnRangeX.y),
+            catchEnemyPrefab.transform.position.y,
+            catchEnemyPrefab.transform.position.z);
+
+        Instantiate(
+            catchEnemyPrefab,
+            spawnPosition,
+            catchEnemyPrefab.transform.rotation);
 
     }
 }

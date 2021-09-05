@@ -108,5 +108,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a9e3c976a08ab48aa3652556917907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 20
-  enemyDamage: 20
+  walkSpeed: 15
