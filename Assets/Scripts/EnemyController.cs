@@ -3,10 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum EnemyType
+{
+    Catcher,
+    Evader
+}
+
 public class EnemyController : MonoBehaviour
 {
 
     public float walkSpeed;
+    public EnemyType enemyType;
 
     private float m_ThresholdPositionZ = -10.0f;
     private PlayerController m_PC;
