@@ -7,7 +7,6 @@ public class EnemyController : MonoBehaviour
 {
 
     public float walkSpeed;
-    public float enemyDamage;
 
     private float m_ThresholdPositionZ = -10.0f;
     private PlayerController m_PC;
