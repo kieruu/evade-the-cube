@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 15
+  enemyDamage: 10
   enemyType: 1
 --- !u!114 &6675695765135444387
 MonoBehaviour:

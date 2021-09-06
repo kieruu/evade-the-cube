@@ -1,53 +1,43 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyType
-{
-    Catcher,
-    Evader
-}
-
-public class EnemyController : MonoBehaviour
+public class PotionController : MonoBehaviour
 {
 
     public float walkSpeed;
-    public float enemyDamage;
-    public EnemyType enemyType;
+    public float healthValue;
 
     private float m_ThresholdPositionZ = -10.0f;
     private PlayerController m_PC;
 
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
         m_PC = GameObject
             .Find("Player")
             .GetComponent<PlayerController>();
     }
 
-    private void Update()
+    // Update is called once per frame
+    void Update()
     {
         transform.position = new Vector3(
             transform.position.x,
             transform.position.y,
             transform.position.z - walkSpeed * Time.deltaTime);
 
-
         // distance between player and enemies
         float totalDistance = Vector3.Distance(m_PC.transform.position, transform.position);
-       
+
         if (totalDistance < 1.0f)
         {
-            if(enemyType == EnemyType.Evader) m_PC.ReceiveDamage(enemyDamage);
-            if (enemyType == EnemyType.Catcher) m_PC.ReceiveScore(10);
+            m_PC.ReceiveHealth(healthValue);
             Destroy(gameObject);
         }
         else if (transform.position.z <= m_ThresholdPositionZ)
         {
-            if (enemyType == EnemyType.Catcher) m_PC.ReceiveDamage(enemyDamage);
             Destroy(gameObject);
         }
-
     }
 }

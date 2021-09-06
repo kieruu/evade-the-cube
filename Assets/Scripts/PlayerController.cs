@@ -37,11 +37,23 @@ public class PlayerController : MonoBehaviour
             transform.position.z);
     }
 
-    public void ReceiveDamage()
+    public void ReceiveDamage(float damage)
     {
-        m_Stats.UpdateHealth(-10.0f);
+        m_Stats.UpdateHealth(-damage);
         hudManager.UpdateHealthText(m_Stats.health);
 
+    }
+
+    public void ReceiveScore(float score)
+    {
+        m_Stats.UpdateScore(score);
+        hudManager.UpdateScoreText(m_Stats.score);
+    }
+
+    public void ReceiveHealth(float health)
+    {
+        m_Stats.UpdateHealth(health);
+        hudManager.UpdateHealthText(m_Stats.health);
     }
 
 }
