@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (m_Stats.health <= 0) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+
         float horizontalInput = Input.GetAxis("Horizontal");
         float horizontalPos = transform.position.x + horizontalInput * walkSpeed * Time.deltaTime;
 
