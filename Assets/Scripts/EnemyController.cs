@@ -38,11 +38,12 @@ public class EnemyController : MonoBehaviour
        
         if (totalDistance < 1.0f)
         {
-            m_PC.ReceiveDamage();
+            if(enemyType == EnemyType.Evader) m_PC.ReceiveDamage();
             Destroy(gameObject);
         }
         else if (transform.position.z <= m_ThresholdPositionZ)
         {
+            if (enemyType == EnemyType.Catcher) m_PC.ReceiveDamage();
             Destroy(gameObject);
         }
 
